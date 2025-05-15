@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TARGET PUNCH 문의하기</title>
+    <link href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402@1.0/Paperlogy.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Paperlogy-Regular', 'Paperlogy', 'Pretendard', sans-serif;
+            background: linear-gradient(135deg, #2c1810 0%, #4a2c20 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .headline {
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .headline span.bounce {
+            display: inline-block;
+            animation: bounce 1s ease-in-out infinite;
+            color: #ff6b35;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+                color: #ff6b35;
+            }
+            50% {
+                transform: translateY(-12px);
+                color: #ff8500;
+            }
+        }
+
+        .divider {
+            width: 120px;
+            height: 3px;
+            background: #ff5500;
+            margin: 0 auto 50px auto;
+        }
+
+        .form-box {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+            text-align: left;
+        }
+
+        .required {
+            color: #ff3333;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #ff6b35;
+            outline: none;
+        }
+
+        textarea {
+            min-height: 60px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin: 16px 0;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8500 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* 모바일 */
+        @media (max-width: 768px) {
+            .headline {
+                font-size: 24px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .full-width {
+                grid-column: span 1;
+            }
+            
+            .form-box {
+                padding: 25px;
+            }
+        }
+
+        #fireworks {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="fireworks"></canvas>
+    <div class="container">
+        <h1 class="headline"><span class="bounce">콜이 터지는</span> 분양광고로 완판 신화를 써드립니다!<br>지금 바로 상담을 요청하세요!</h1>
+        <div class="divider"></div>
+        
+        <div class="form-box">
+            <form id="contactForm" action="https://script.google.com/macros/s/AKfycbzbeHuc-GUWfO7QHLdkNWHunloukdJS04gkZ8fhoZCQEwOmL5x_Jdqj9TWTYW3tUI38/exec" method="POST">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>회사명 <span class="required">*</span></label>
+                        <input type="text" name="companyName" placeholder="회사명을 입력해주세요" required>
+                    </div>
+                    <div class="form-group">
+                        <label>담당자명/직함 <span class="required">*</span></label>
+                        <input type="text" name="name" placeholder="담당자명/직함을 입력해주세요" required>
+                    </div>
+                    <div class="form-group">
+                        <label>연락처 <span class="required">*</span></label>
+                        <input type="tel" name="phone" placeholder="연락처를 입력해주세요" required>
+                    </div>
+                    <div class="form-group">
+                        <label>이메일 <span class="required">*</span></label>
+                        <input type="email" name="email" placeholder="이메일을 입력해주세요" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>문의 내용</label>
+                        <textarea name="inquiry" placeholder="내용을 입력해주세요"></textarea>
+                    </div>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agree" name="agree" required>
+                    <label for="agree">개인정보 수집 및 이용에 동의합니다. <span class="required">*</span></label>
+                </div>
+                
+                <button type="submit" class="submit-btn">문의하기 →</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // 구글 시트 연동 URL
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx6XXApRPfKn0ABs-06_2S1LbrE2OVdRhIbe228Ny1ahhzBx4hoolyWn64S60ILQiyq/exec';
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+
+            fetch(this.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(result => {
+                alert('문의가 완료되었습니다! 빠른 시일 내에 연락드리겠습니다.');
+                this.reset();
+            })
+            .catch(error => {
+                alert('문의 중 오류가 발생했습니다. 다시 시도해주세요.');
+            });
+        });
+
+        // 전화번호 포맷팅
+        document.querySelector('input[name="phone"]').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/[^0-9]/g, '');
+            if (value.length >= 11) {
+                value = value.substring(0, 11);
+                value = value.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+            } else if (value.length >= 7) {
+                value = value.replace(/(\d{3})(\d{4})(\d+)/, '$1-$2-$3');
+            } else if (value.length >= 3) {
+                value = value.replace(/(\d{3})(\d+)/, '$1-$2');
+            }
+            e.target.value = value;
+        });
+
+        // 폭죽 애니메이션
+        const canvas = document.getElementById('fireworks');
+        const ctx = canvas.getContext('2d');
+        let dpr = window.devicePixelRatio || 1;
+        function resizeCanvas() {
+            canvas.width = window.innerWidth * dpr;
+            canvas.height = window.innerHeight * dpr;
+            canvas.style.width = window.innerWidth + 'px';
+            canvas.style.height = window.innerHeight + 'px';
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        function randomColor() {
+            const colors = ['#ff6b35', '#ff8500', '#ffd700', '#00cfff', '#ff3cac', '#fff'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        class Firework {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height * (0.3 + Math.random() * 0.4);
+                this.particles = [];
+                this.color = randomColor();
+                for (let i = 0; i < 30 + Math.random() * 20; i++) {
+                    const angle = (Math.PI * 2 * i) / 40;
+                    const speed = 2 + Math.random() * 2;
+                    this.particles.push({
+                        x: this.x,
+                        y: this.y,
+                        vx: Math.cos(angle) * speed,
+                        vy: Math.sin(angle) * speed,
+                        alpha: 1,
+                        color: this.color
+                    });
+                }
+            }
+            update() {
+                this.particles.forEach(p => {
+                    p.x += p.vx * dpr;
+                    p.y += p.vy * dpr;
+                    p.vx *= 0.98;
+                    p.vy *= 0.98;
+                    p.vy += 0.02 * dpr;
+                    p.alpha -= 0.012;
+                });
+                this.particles = this.particles.filter(p => p.alpha > 0);
+            }
+            draw(ctx) {
+                this.particles.forEach(p => {
+                    ctx.save();
+                    ctx.globalAlpha = p.alpha;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, 2.5 * dpr, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color;
+                    ctx.shadowColor = p.color;
+                    ctx.shadowBlur = 10 * dpr;
+                    ctx.fill();
+                    ctx.restore();
+                });
+            }
+            isDone() {
+                return this.particles.length === 0;
+            }
+        }
+
+        let fireworks = [];
+        function launchFirework() {
+            fireworks.push(new Firework());
+        }
+        setInterval(launchFirework, 900);
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            fireworks.forEach(fw => {
+                fw.update();
+                fw.draw(ctx);
+            });
+            fireworks = fireworks.filter(fw => !fw.isDone());
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
